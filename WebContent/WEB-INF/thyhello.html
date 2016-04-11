@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hello World Thymeleaf!!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p th:text="#{msg}">Welcome Offline</p>
+	<p>
+		Created By <b th:text="#{author}"></b>
+	</p>
+	
+	<h1 th:text="${nick}">My Nick</h1>
+	
+	
+	<ul th:each="var : ${languages}">
+		<li th:text="${var}"></li>
+	</ul>
+</body>
+</html>
