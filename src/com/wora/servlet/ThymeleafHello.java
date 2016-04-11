@@ -37,6 +37,8 @@ public class ThymeleafHello extends HttpServlet {
 		languages.add("fr");
 		ctx.setVariable("languages", languages);
 		ctx.setVariable("nick", "CaySever");
+		
+		request.getSession().setAttribute("name", "kafkef");
 
 		String templateName = getTemplateName(request);
 		String result = engine.process(templateName, ctx);

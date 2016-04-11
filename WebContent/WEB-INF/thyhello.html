@@ -2,20 +2,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Hello World Thymeleaf!!</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Style-Type" content="text/css"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<link rel="stylesheet" th:href="@{/static/css/bootstrap.css}"></link>
+	<script type="text/javascript" th:src="@{/static/js/jquery-2.2.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}"></script>
 </head>
 <body>
-	<p th:text="#{msg}">Welcome Offline</p>
-	<p>
-		Created By <b th:text="#{author}"></b>
-	</p>
+
+	<div class="container">
+		<div class="jumbotron">
+			<p align="center">
+				Created By <b th:text="#{author}"></b>
+			</p>
+	    </div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Author</th>
+							<th>Language</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="langugage : ${languages}">
+							<td th:text="#{author}"/>
+							<td th:text="${langugage}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
 	
-	<h1 th:text="${nick}">My Nick</h1>
-	
-	
-	<ul th:each="var : ${languages}">
-		<li th:text="${var}"></li>
-	</ul>
 </body>
 </html>
