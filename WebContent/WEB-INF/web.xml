@@ -4,18 +4,28 @@
 	<display-name>ThymeleafTutorial</display-name>
 	
 	
+	<listener>
+		<listener-class>com.wora.servlet.TemplateInitializer</listener-class>
+	</listener>
+	
 	<servlet>
 		<servlet-name>ThyHello</servlet-name>
 		<servlet-class>com.wora.servlet.ThymeleafHello</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>ThyHello</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	
-	<listener>
-		<listener-class>com.wora.servlet.TemplateInitializer</listener-class>
-	</listener>
+	<servlet>
+		<servlet-name>AddOrders</servlet-name>
+		<servlet-class>com.wora.servlet.AddOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddOrders</servlet-name>
+		<url-pattern>/addOrder</url-pattern>
+	</servlet-mapping>
+	
+	
 
 </web-app>

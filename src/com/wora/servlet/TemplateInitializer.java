@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import com.wora.facade.ServiceFacade;
+
 /**
  * @author wora you can find more info at @see http://alicanakkus.com
  * */
@@ -26,6 +28,9 @@ public class TemplateInitializer implements ServletContextListener {
 		templateResolver.setCacheTTLMs(3600000L);
 		
 		sce.getServletContext().setAttribute("templateResolver", templateResolver);
+		
+		ServiceFacade.getInstance().startService();
+		
 		logger.info("Context initialized..");
 	}
 

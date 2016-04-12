@@ -2,7 +2,6 @@ package com.wora.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import com.wora.facade.ServiceFacade;
 
 public class ThymeleafHello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,15 +32,12 @@ public class ThymeleafHello extends HttpServlet {
 		engine.setTemplateResolver(templateResolver);
 
 		WebContext ctx = new WebContext(request, response, getServletConfig().getServletContext(), request.getLocale());
-		ArrayList<String> languages = new ArrayList<>();
-		languages.add("tr");
-		languages.add("en");
-		languages.add("fr");
-		ctx.setVariable("languages", languages);
-		ctx.setVariable("nick", "CaySever");
+		try {
+			ctx.setVariable("orders", ServiceFacade.getInstance().getOrders());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 		
-		request.getSession().setAttribute("name", "kafkef");
-
 		String templateName = getTemplateName(request);
 		String result = engine.process(templateName, ctx);
 
