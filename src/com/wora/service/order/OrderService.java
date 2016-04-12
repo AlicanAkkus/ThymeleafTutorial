@@ -69,13 +69,7 @@ public class OrderService implements IOrderService {
 	 */
 	@Override
 	public ArrayList<Order> getOrders() throws Exception {
-		
-		ArrayList<Order> orderList = new ArrayList<Order>();
-		for(Long id : orderMap.keySet()){
-			orderList.add(orderMap.get(id));
-		}
-		
-		return orderList;
+		return new ArrayList<Order>(orderMap.values());
 	}
 
 }
