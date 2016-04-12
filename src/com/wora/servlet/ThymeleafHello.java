@@ -38,8 +38,7 @@ public class ThymeleafHello extends HttpServlet {
 			e.printStackTrace();
 		}	
 		
-		String templateName = getTemplateName(request);
-		String result = engine.process(templateName, ctx);
+		String result = engine.process("thyhello", ctx);
 
 		PrintWriter out = null;
 		try {
@@ -48,16 +47,6 @@ public class ThymeleafHello extends HttpServlet {
 		} finally {
 			out.close();
 		}
-	}
-
-	protected String getTemplateName(HttpServletRequest request) {
-		String requestPath = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		if (contextPath == null) {
-			contextPath = "";
-		}
-
-		return requestPath.substring(contextPath.length() + 1, requestPath.indexOf(".html"));
 	}
 
 }

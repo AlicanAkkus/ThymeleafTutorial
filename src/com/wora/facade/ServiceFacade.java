@@ -36,8 +36,8 @@ public class ServiceFacade {
 		orderService.addOrder(order);
 	}
 
-	public void deleteOrder(Order order) throws Exception{
-		orderService.deleteOrder(order);
+	public void deleteOrder(Long orderId) throws Exception{
+		orderService.deleteOrder(orderId);
 	}
 
 	public void updateOrder(Order order) throws Exception{

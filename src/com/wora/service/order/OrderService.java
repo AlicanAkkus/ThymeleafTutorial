@@ -1,9 +1,7 @@
 package com.wora.service.order;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-
 import com.wora.bean.Order;
 
 public class OrderService implements IOrderService {
@@ -27,13 +25,13 @@ public class OrderService implements IOrderService {
 	 * @see com.wora.service.order.IOrderService#deleteOrder(com.wora.bean.Order)
 	 */
 	@Override
-	public void deleteOrder(Order order) throws Exception {
+	public void deleteOrder(Long orderId) throws Exception {
 
-		if (!orderMap.containsKey(order.getId())) {
-			throw new RuntimeException(order.getId() + " not found!");
+		if (!orderMap.containsKey(orderId)) {
+			throw new RuntimeException(orderId + " not found!");
 		}
 
-		orderMap.put(order.getId(), order);
+		orderMap.remove(orderId);
 	}
 
 	/* (non-Javadoc)

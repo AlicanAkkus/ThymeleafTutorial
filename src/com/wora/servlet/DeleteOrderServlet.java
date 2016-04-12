@@ -18,9 +18,9 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import com.wora.bean.Order;
 import com.wora.facade.ServiceFacade;
 
-public class AddOrderServlet extends HttpServlet {
+public class DeleteOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Logger logger = LogManager.getLogger(AddOrderServlet.class);
+	Logger logger = LogManager.getLogger(DeleteOrderServlet.class);
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,23 +36,10 @@ public class AddOrderServlet extends HttpServlet {
 
 		try {
 			
-			String orderDetails = request.getParameter("orderDescription");
 			String orderId = request.getParameter("orderId");
-			String orderPrice = request.getParameter("orderPrice");
-			String orderSummary = request.getParameter("orderSummary");
-			String orderStatus = request.getParameter("orderStatus");
-			
-			Order order = new Order();
-			order.setDetails(orderDetails);
-			order.setId(Long.valueOf(orderId));
-			order.setPrice(Double.valueOf(orderPrice));
-			order.setSummary(orderSummary);
-			order.setStatus(Boolean.valueOf(orderStatus));
-
-			logger.info(order.toString());
-			ServiceFacade.getInstance().addOrder(order);
+			ServiceFacade.getInstance().deleteOrder(Long.valueOf(orderId));
 			request.getRequestDispatcher("thyhello.html").forward(request, response);
-
+			
 		} catch (Exception e) {
 			logger.error(e, e);
 		}

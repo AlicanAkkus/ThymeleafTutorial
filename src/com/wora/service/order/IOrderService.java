@@ -8,7 +8,7 @@ public interface IOrderService {
 
 	public abstract void addOrder(Order order) throws Exception;
 
-	public abstract void deleteOrder(Order order) throws Exception;
+	public abstract void deleteOrder(Long orderId) throws Exception;
 
 	public abstract void updateOrder(Order order) throws Exception;
 

@@ -2,7 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>ThymeleafTutorial</display-name>
-	
+	<welcome-file-list>
+		<welcome-file>thyhello.html</welcome-file>
+	</welcome-file-list>
 	
 	<listener>
 		<listener-class>com.wora.servlet.TemplateInitializer</listener-class>
@@ -24,6 +26,14 @@
 	<servlet-mapping>
 		<servlet-name>AddOrders</servlet-name>
 		<url-pattern>/addOrder</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DeleteOrder</servlet-name>
+		<servlet-class>com.wora.servlet.DeleteOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteOrder</servlet-name>
+		<url-pattern>/deleteOrder</url-pattern>
 	</servlet-mapping>
 	
 	
