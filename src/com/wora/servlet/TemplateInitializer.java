@@ -35,5 +35,6 @@ public class TemplateInitializer implements ServletContextListener {
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
+		logger.info("Context destroyed..");
 	}
 }

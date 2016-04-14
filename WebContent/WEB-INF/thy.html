@@ -1,0 +1,97 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" th:href="@{/static/css/bootstrap.css}"></link>
+<script type="text/javascript"
+	th:src="@{/static/js/jquery-2.2.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/order.js}"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div th:include="header :: header">...</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+	
+				<form th:attr="action=@{/addOrder}" role="form" data-toggle="validator">
+	
+					<div class="form-group" id="orderIdGroup">
+						<label for="orderId">Order ID:</label> 
+						<input type="number" max="10000000" min="1" class="form-control" name="orderId" id="orderId" placeholder="Order id.." required="required"/>
+					</div>
+					<div class="form-group">
+						<div class="input-grouo">
+							<label for="orderPrice">Order Price:</label> 
+							<div class="input-group-addon">$</div>
+							<input type="number" step="any" max="1000" min="0.1" class="form-control" name="orderPrice" id="orderPrice" placeholder="Order price.." required="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="orderSummary">Order Summary:</label>
+						<input type="text" class="form-control" name="orderSummary" id="orderSummary" placeholder="Order summary.." required="required" />
+					</div>
+					<div class="form-group">
+						<label for="orderDescription">Order Description:</label>
+						<input type="text" class="form-control" id="orderDescription" name="orderDescription" placeholder="Order desc.." required="required"/>
+					</div>
+					<div class="radio">
+						<label class="radio-inline"><input type="radio" name="orderStatus" value="true" />Active</label>
+						<label class="radio-inline"><input type="radio" name="orderStatus" value="false" />Deactive</label>
+					</div>
+					<button id="orderFormButton" type="submit" class="btn btn-default">Save</button>
+					
+					<input id="action" name="action" type="hidden" value="save" />
+				</form>
+			</div>
+	
+			<div class="col-sm-6">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Order ID</th>
+								<th>Order Price</th>
+								<th>Order Summary</th>
+								<th>Order Description</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="order, current : ${#lists.sort(orders, comparator)}" th:class="(${order.status} == true) ? 'success' : 'danger'">
+								<td th:text="${current.index + 1}"></td>
+								<td th:text="${order.id}"></td>
+								<td th:text="${order.price} + '$'"></td>
+								<td th:text="${order.summary}"></td>
+								<td th:text="${order.details}"></td>
+								<td>
+									<div class="btn-group">
+									  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    Action <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li><a th:href="@{/deleteOrder(orderId=${order.id})}">Delete</a></li>
+									    <li><a href="#" th:onclick="'javascript:edit(\'' + ${order.id} + '\' , \'' + ${order.price} + '\' , \'' + ${order.summary} + '\' , \'' + ${order.details} + '\' , \'' + ${order.status} + '\'  );'">Edit</a></li>
+									  </ul>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		<div th:include="footer :: footer">...</div>
+	</div>
+
+</body>
+</html>

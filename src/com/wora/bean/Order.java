@@ -1,6 +1,8 @@
 package com.wora.bean;
 
-public class Order {
+import java.util.Comparator;
+
+public class Order implements Comparable<Order>{
 	long id;
 	double price;
 	String summary;
@@ -63,6 +65,19 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", price=" + price + ", summary=" + summary + ", details=" + details + ", status=" + status + "]";
+	}
+
+
+	@Override
+	public int compareTo(Order o) {
+		if(this.getPrice() == o.getPrice())
+			return 0;
+		if(this.getPrice() < o.getPrice())
+			return 1;
+		if(this.getPrice() > o.getPrice())
+			return -1;
+		
+		return 0;
 	}
 
 }

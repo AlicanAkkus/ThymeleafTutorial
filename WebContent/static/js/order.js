@@ -1,5 +1,8 @@
 function edit(orderId, orderPrice, orderSummary, orderDes, orderStatus){
 	
+	$("#orderFormButton").text("Update");
+	$("#action").val("update");
+	$("#orderIdGroup").hide();
 	$("#orderId").val(orderId);
 	$("#orderPrice").val(orderPrice);
 	$("#orderSummary").val(orderSummary);

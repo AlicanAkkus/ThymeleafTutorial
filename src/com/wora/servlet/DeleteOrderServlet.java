@@ -1,8 +1,6 @@
 package com.wora.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import com.wora.bean.Order;
 import com.wora.facade.ServiceFacade;
 
 public class DeleteOrderServlet extends HttpServlet {
@@ -38,7 +32,7 @@ public class DeleteOrderServlet extends HttpServlet {
 			
 			String orderId = request.getParameter("orderId");
 			ServiceFacade.getInstance().deleteOrder(Long.valueOf(orderId));
-			request.getRequestDispatcher("thyhello.html").forward(request, response);
+			request.getRequestDispatcher("thy.html").forward(request, response);
 			
 		} catch (Exception e) {
 			logger.error(e, e);
