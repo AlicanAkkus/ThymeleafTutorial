@@ -11,12 +11,12 @@
 	</listener>
 	
 	<servlet>
-		<servlet-name>ThyHello</servlet-name>
+		<servlet-name>Thy</servlet-name>
 		<servlet-class>com.wora.servlet.OrderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ThyHello</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<servlet-name>Thy</servlet-name>
+		<url-pattern>/thy.html</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
