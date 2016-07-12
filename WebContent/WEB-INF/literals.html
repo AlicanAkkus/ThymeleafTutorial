@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" th:href="@{/static/css/bootstrap.css}"></link>
+<script type="text/javascript"
+	th:src="@{/static/js/jquery-2.2.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div th:include="header :: header">...</div>
+
+		<div>
+			<p>
+				<b>String Literals : </b> Now you are looking at a <span
+					th:text="'working web application'">template file</span>.
+			</p>
+			<p>
+				<b>Numeric Literals : </b> The year is <span th:text="2016">1492</span>.
+			</p>
+			<p>
+				<b>Numeric Literals : </b>In two years, it will be <span
+					th:text="2016 + 2">1494</span>.
+			</p>
+			<div>
+				<b>Numeric Literals : <span th:if="2 + 2 == 4">Two value is same.</span></b>
+				<p th:if="5 > 4">Five is greather than a Four</p>
+			</div>
+			<div>
+				Condition Literals;
+				<p th:if="${user} == null">User not found!</p>
+			</div>
+
+			<div>
+				Appending texts;
+				<h6 th:text="'The name of the user is ' + 'Alican'"></h6>
+			</div>
+			
+			<div>
+				Comparators and Equality;
+				<p><span if=""></span></p>
+			</div>
+
+		</div>
+
+		<div th:include="footer :: footer">...</div>
+	</div>
+
+</body>
+</html>

@@ -8,13 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import com.wora.facade.ServiceFacade;
+import com.wora.util.DateUtils;
 
-public class ThymeleafHello extends HttpServlet {
+public class LiteralsServlet extends HttpServlet {
+	private static Logger logger = Logger.getLogger(LiteralsServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,26 +29,22 @@ public class ThymeleafHello extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ServletContextTemplateResolver templateResolver = (ServletContextTemplateResolver) request.getServletContext().getAttribute("templateResolver");
-		TemplateEngine engine = new TemplateEngine();
-		engine.setTemplateResolver(templateResolver);
-
-		WebContext ctx = new WebContext(request, response, getServletConfig().getServletContext(), request.getLocale());
 		try {
-			ctx.setVariable("orders", ServiceFacade.getInstance().getOrders());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-		
-		String result = engine.process("thyhello", ctx);
+			ServletContextTemplateResolver templateResolver = (ServletContextTemplateResolver) request.getServletContext().getAttribute("templateResolver");
+			TemplateEngine engine = new TemplateEngine();
+			engine.setTemplateResolver(templateResolver);
 
-		PrintWriter out = null;
-		try {
-			out = response.getWriter();
+			WebContext ctx = new WebContext(request, response, getServletConfig().getServletContext(), request.getLocale());
+			ctx.setVariable("today", DateUtils.getLocalDate());
+			
+			String result = engine.process("literals", ctx);
+
+			PrintWriter out = response.getWriter();
 			out.println(result);
-		} finally {
-			out.close();
+		} catch (Exception e) {
+			logger.error(e, e);
 		}
+
 	}
 
 }

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>ThymeleafTutorial</display-name>
 	<welcome-file-list>
-		<welcome-file>thyhello.html</welcome-file>
+		<welcome-file>thy.html</welcome-file>
 	</welcome-file-list>
 	
 	<listener>
@@ -17,6 +17,15 @@
 	<servlet-mapping>
 		<servlet-name>Thy</servlet-name>
 		<url-pattern>/thy.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ThyLiterals</servlet-name>
+		<servlet-class>com.wora.servlet.LiteralsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ThyLiterals</servlet-name>
+		<url-pattern>/literals.html</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
